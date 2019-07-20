@@ -48,15 +48,24 @@ with open(file,"r") as fh:
 
     number_of_contigs = len(contig_lengths)
     max_contig_length = contig_lengths[0]
-    Total_contig_length = sum(contig_lengths)
-    Mean_contig_length = Total_contig_length/number_of_contigs
+    Total_genome_length = sum(contig_lengths)
+    Mean_contig_length = Total_genome_length/number_of_contigs
+
+    #Caculate N50
+    summed_length = 0
+    mid_point = Total_genome_length/2
+    for contig_length in contig_lengths:
+        summed_length += contig_length
+        if summed_length >= mid_point:
+                N50 = contig_length
+                break
 
 print(contig_lengths)
 print("Number of contigs =", number_of_contigs)
 print("Max. Contig Length =", max_contig_length)
-print("Length of total contigs =", Total_contig_length)
+print("Total genome Length =", Total_genome_length)
 print("Mean Contig Length =", Mean_contig_length)
-
+print("N50 =", N50)
 # kmer_length =
 
 
